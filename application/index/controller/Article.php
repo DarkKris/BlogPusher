@@ -13,6 +13,8 @@ class Article extends Controller
 {
     public function new()
     {
+        $taglist = ['0','2'];
+        $this->assign('taglist',$taglist);
         return view('index/new');
     }
 
