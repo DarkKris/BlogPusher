@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+{include file='index/header' title='BlogPusher'}
+<body>
+{include file='index/contact'}
+<br>
+<div style="margin-left: 25px ;margin-right: 25px;margin-top: 10px">
+    <div align="center" class="card-deck">
+        <div class="card" style="width: 20rem;">
+            <img class="card-img-top" src="http://localhost:8888/BlogPusher/public/static/img/newarticle.png" alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title">New Article</h4>
+                <p class="card-text">Create a New Article for Blog and Push it to the GitHub</p>
+                <a href="{:url('index/Article/new')}" class="btn btn-dark">Start !</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 20rem;">
+            <img class="card-img-top" src="http://localhost:8888/BlogPusher/public/static/img/checkarticle.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title">Check Article</h4>
+                <p class="card-text">Check one of the Article you have pushed and revise it</p>
+                <a href="{:url('index/Article/getlist')}" class="btn btn-dark">Check !</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 20rem;">
+            <img class="card-img-top" src="http://localhost:8888/BlogPusher/public/static/img/tagcontrol.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title">Tag Control</h4>
+                <p class="card-text">Look at all of Tags of article in order to overall whole Blog</p>
+                <a href="{:url('index/Article/tag')}" class="btn btn-dark">Come !</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 20rem;">
+            <img class="card-img-top" src="http://localhost:8888/BlogPusher/public/static/img/other.png" alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title">Other</h4>
+                <p class="card-text">Other function will be built soon and please wait for ...</p>
+                <a href="" class="btn btn-dark">Pending..</a>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<hr width="95%" align="center">
+<div align="center"><h9 style="color: #999999">Copyright © Dark`Kris {$ti=time()|date='Y',###} Theme by DarkKris</h9></div>
+</body>
+</html>
