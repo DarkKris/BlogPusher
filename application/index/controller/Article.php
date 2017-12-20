@@ -27,5 +27,10 @@ class Article extends Controller
     {
         return view('index/tag');
     }
+
+    public function create()
+    {
+
+    }
 }
 ?>
