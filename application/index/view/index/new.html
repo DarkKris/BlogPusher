@@ -4,7 +4,7 @@
 <body>
 {include file='index/extra/contact'}
 <br>
-    <form style="margin-right: 130px;margin-left: 130px;margin-top: 15px" action="{:url('index/create')}">
+    <form style="margin-right: 130px;margin-left: 130px;margin-top: 15px" action="{:url('index/create')}" method="post">
         <div class="form-group">
             <label for="formGroupExampleInput">Article Title</label>
             <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter Title...">
@@ -38,19 +38,24 @@
         </div>
 
         <div class="form-group">
-            <label for="exampleFormControlTextarea1">Content</label>
+            <label for="contentText">Content</label>
             <br>
             <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
                 <div class="input-group">
                     <span class="input-group-addon" id="btnGroupAddon"  style="width: 90px">Edit Kits</span>
                     <div class="btn-group mr-2" role="group" aria-label="First group">
-                        <button type="button" class="btn btn-secondary">LaTeX Converters</button>
-                        <button type="button" class="btn btn-secondary">Insert Tab</button>
+                        <button type="button" class="btn btn-secondary" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">LaTeX Converters</button>
+                            {include file='index/function/lvc'}
+
                         <button type="button" class="btn btn-secondary">Insert Image</button>
+                            {include file='index/function/iic'}
+
+                        <button type="button" class="btn btn-secondary" onclick="inserttab()">Insert Tab</button>
+                        <!--<a href="" class="btn btn-dark">Insert</a>-->
                     </div>
                 </div>
             </div>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="20"></textarea>
+            <textarea class="form-control" id="contentText" rows="20"></textarea>
             <!--<div id="preview" style="margin-left: 10px;float:right;width:49.5%;height:768px; border:0.5px solid #315;background:#e6e6e6;"></div>-->
         </div>
 
@@ -59,23 +64,13 @@
         </div>
         <!--&nbsp;<button type="button" class="btn btn-primary">Save</button>-->
     </form>
-    <!--实时预览-->
-    <!--<script src='http://localhost:8888/BlogPusher/public/static/js/markdown.js'></script>-->
-    <!--<script type="text/javascript">-->
-    <!--function Editor(input , preview){-->
-    <!--this.update = function(){-->
-    <!--preview.innerHTML = markdown.toHTML(input.value);-->
-    <!--};-->
-    <!--input.editer = this-->
-    <!--this.update()-->
-    <!--}-->
 
-    <!--var $ = function(id) {-->
-    <!--return document.getElementById(id)-->
-    <!--}-->
-    <!--new Editor($("text-input"),$("preview"))-->
-    <!--</script>-->
-    <!--实时预览结束-->
+<script>
+    function inserttab(){
+        document.getElementById('contentText').value = document.getElementById('contentText').value + "&nbsp;&nbsp;&nbsp;&nbsp;";
+    }
+</script>
+
 {include file='index/extra/footer'}
 </body>
 </html>

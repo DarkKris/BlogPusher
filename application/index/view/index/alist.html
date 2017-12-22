@@ -3,7 +3,16 @@
 {include file='index/extra/header' title='BlogPusher'}
 <body>
 {include file='index/extra/contact'}
-
+<div style="margin-right: 130px;margin-left: 130px">
+    {volist name="alist" id="infor"}
+    <div style="margin-top: 20px">
+        <hr>
+        <h4 class="card-title" href="{:url('index/Article/')}">{$infor.title}</h4>
+        <p class="card-text">{$infor.article}</p>
+        <p class="card-text"><small class="text-muted">Published on {$infor.date|'Y-m-d',###}</small></p>
+    </div>
+    {/volist}
+</div>
 {include file='index/extra/footer'}
 </body>
 </html>

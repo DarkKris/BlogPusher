@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+{include file='index/extra/header' title='BlogPusher'}
+<body>
+{include file='index/extra/contact'}
+<br>
+<form style="margin-right: 130px;margin-left: 130px;margin-top: 15px" action="{:url('index/create')}">
+    <div class="form-group">
+        <label for="formGroupExampleInput">Article Title</label>
+        <input type="text" class="form-control" id="formGroupExampleInput" value="{:$title}" required>
+    </div>
+
+    <div class="form-group">
+        <label for="descriptionInput">Description</label>
+        <input type="text" class="form-control" id="descriptionInput" value="{:$description}" required>
+    </div>
+
+    <label for="formGroupExampleInput">Publish Date</label>
+    <div class="form-row">
+        <div class="col">
+            <input type="text" class="form-control" value="{$date|'Y',###}" required>
+        </div>
+        <div class="col">
+            <input type="text" class="form-control" placeholder="{$date|'m',###}" required>
+        </div>
+        <div class="col">
+            <input type="text" class="form-control" placeholder="{$date|'d',###}" required>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleFormControlSelect1">Tag Select</label>
+        <select class="form-control" id="exampleFormControlSelect1" >
+            {volist name="taglist" id="infor"}
+                {eq name="" value=""}
+                    <option selected="selected">{$infor}</option>
+                {else/}
+                    <option>{$infor}</option>
+                {/eq}
+            {/volist}
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">Content</label>
+        <br>
+        <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="input-group">
+                <span class="input-group-addon" id="btnGroupAddon"  style="width: 90px">Edit Kits</span>
+                <div class="btn-group mr-2" role="group" aria-label="First group">
+                    <button type="button" class="btn btn-secondary">LaTeX Converters</button>
+                    <button type="button" class="btn btn-secondary">Insert Tab</button>
+                    <button type="button" class="btn btn-secondary">Insert Image</button>
+                </div>
+            </div>
+        </div>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="20">{:$article}</textarea>
+    </div>
+
+    <div align="left">
+        <button type="submit" class="btn btn-primary" style="width: 100px">Submit</button>
+    </div>
+</form>
+{include file='index/extra/footer'}
+</body>
+</html>

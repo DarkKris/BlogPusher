@@ -1,0 +1,40 @@
+<!--LaTeX Viewport Collapse-->
+
+<!--LaTeX渲染-->
+<!--<script type="text/x-mathjax-config">-->
+  <!--MathJax.Hub.Config({-->
+    <!--showProcessingMessages: false,-->
+    <!--tex2jax: { inlineMath: [['$','$'],['\\(','\\)']] }-->
+  <!--});-->
+<!--</script>-->
+<!--<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<!--LaTeX渲染结束-->
+
+<div class="collapse" id="collapseExample">
+    <div class="card card-body">
+        <input type="text" placeholder="LaTeX Formula" oninput="myFunction(this)" style="width: 210px" id="formuladesk">
+        <div id="out" style="height: 30px;margin-top: 13px;margin-bottom: 10px"></div>
+        <div class="btn-group" role="group" aria-label="Basic example" align="center">
+            <button type="button" class="btn btn-secondary" onclick='document.getElementById("formuladesk").value = ""'>Clear</button>
+            <button type="button" class="btn btn-secondary" onclick='window.open("http://latex.codecogs.com");'>Help</button>
+            <button type="button" class="btn btn-secondary" onclick="insertformula()">Insert</button>
+        </div>
+    </div>
+</div>
+
+<!--实时预览-->
+<script>
+    function myFunction(a) {
+        document.getElementById('out').innerHTML = '<img src="http://latex.codecogs.com/gif.latex?'+a.value+'"/>';
+        //alert("input 输入框值已发生变化。"+a.value);
+    }
+</script>
+<!--实时预览结束-->
+
+<!--插入公式-->
+<script>
+    function insertformula(){
+        document.getElementById('contentText').value = document.getElementById('contentText').value + document.getElementById('formuladesk').value;
+    }
+</script>
+<!--插入公式结束-->
