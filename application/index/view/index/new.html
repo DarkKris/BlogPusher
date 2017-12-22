@@ -4,6 +4,7 @@
 <body>
 {include file='index/extra/contact'}
 <br>
+<!--<div>-->
     <form style="margin-right: 130px;margin-left: 130px;margin-top: 15px" action="{:url('index/create')}" method="post">
         <div class="form-group">
             <label for="formGroupExampleInput">Article Title</label>
@@ -29,7 +30,7 @@
         </div>
 
         <div class="form-group">
-            <label for="exampleFormControlSelect1">Tag Select</label>
+            <label for="exampleFormControlSelect1" style="margin-top: 13px">Tag Select</label>
             <select class="form-control" id="exampleFormControlSelect1">
                 {volist name="taglist" id="infor"}
                 <option>{$infor}</option>
@@ -47,8 +48,10 @@
                         <button type="button" class="btn btn-secondary" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">LaTeX Converters</button>
                             {include file='index/function/lvc'}
 
-                        <button type="button" class="btn btn-secondary">Insert Image</button>
+                        <button type="button" class="btn btn-secondary" data-toggle="collapse" data-target="#insertimage" aria-expanded="false" aria-controls="collapseExample">Insert Image</button>
                             {include file='index/function/iic'}
+
+                        <button type="button" class="btn btn-secondary" onclick="insertspace()">Insert Space</button>
 
                         <button type="button" class="btn btn-secondary" onclick="inserttab()">Insert Tab</button>
                         <!--<a href="" class="btn btn-dark">Insert</a>-->
@@ -59,15 +62,20 @@
             <!--<div id="preview" style="margin-left: 10px;float:right;width:49.5%;height:768px; border:0.5px solid #315;background:#e6e6e6;"></div>-->
         </div>
 
-        <div align="left">
+        <div align="center">
             <button type="submit" class="btn btn-primary" style="width: 100px">Submit</button>
         </div>
         <!--&nbsp;<button type="button" class="btn btn-primary">Save</button>-->
     </form>
+<!--</div>-->
 
 <script>
     function inserttab(){
         document.getElementById('contentText').value = document.getElementById('contentText').value + "&nbsp;&nbsp;&nbsp;&nbsp;";
+    }
+
+    function insertspace(){
+        document.getElementById('contentText').value = document.getElementById('contentText').value + "&nbsp;";
     }
 </script>
 
