@@ -17,5 +17,7 @@ return [
         ':id'   => ['index/hello', ['method' => 'get'], ['id' => '\d+']],
         ':name' => ['index/hello', ['method' => 'post']],
     ],
-
+    'newarticle'=>'index/article/anew',
+    'articlelist'=>'index/article/getlist',
+    'taglist'=>'index/article/tag',
 ];

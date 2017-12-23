@@ -3,6 +3,12 @@
 {include file='index/extra/header' title='BlogPusher'}
 <body>
 {include file='index/extra/contact'}
+<!--漂浮回顶按钮-->
+<style>
+    #topnav {position:fixed;left:92.6%;top:87% }
+</style>
+<!--漂浮回顶按钮结束-->
+
 <br>
 <div class="list-group" style="margin-right: 130px;margin-left: 130px">
     {foreach $alist as $k => $v}
@@ -15,6 +21,9 @@
         <small>{$v[0]['tag']}</small>
     </a>
     {/foreach}
+</div>
+<div id="topnav">
+    <img src="http://localhost:8888/BlogPusher/public/static/ico/chevron-top.png" alt="Top" onclick="document.documentElement.scrollTop = document.body.scrollTop =0;">
 </div>
 {include file='index/extra/footer'}
 </body>
