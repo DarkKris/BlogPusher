@@ -2,10 +2,14 @@
 
 <div class="collapse" id="insertimage">
     <div class="card card-body">
-        <form action="" method="post">
+        <form action="{:url('index/Article/uploadimg')}" method="post">
             <div class="form-group" align="center">
-                <input type="file" class="form-control-file" id="imageupload">
-                <button type="submit" class="btn btn-secondary" style="margin-top: 13px">Insert</button>
+                <!--<input type="file" class="form-control-file" id="imageupload">-->
+                <label class="custom-file">
+                    <input type="file" id="file2" class="custom-file-input">
+                    <span class="custom-file-control"></span>
+                </label>
+                <button type="submit" class="btn btn-secondary" style="margin-top: 7px">Insert</button>
             </div>
         </form>
     </div>
