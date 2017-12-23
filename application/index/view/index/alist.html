@@ -3,15 +3,18 @@
 {include file='index/extra/header' title='BlogPusher'}
 <body>
 {include file='index/extra/contact'}
-<div style="margin-right: 130px;margin-left: 130px">
-    {volist name="alist" id="infor"}
-    <div style="margin-top: 20px">
-        <hr>
-        <h4 class="card-title" href="{:url('index/Article/')}">{$infor.title}</h4>
-        <p class="card-text">{$infor.article}</p>
-        <p class="card-text"><small class="text-muted">Published on {$infor.date|'Y-m-d',###}</small></p>
-    </div>
-    {/volist}
+<br>
+<div class="list-group" style="margin-right: 130px;margin-left: 130px">
+    {foreach $alist as $k => $v}
+    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{$v[0]['title']}</h5>
+            <small>{$v[0]['date']}</small>
+        </div>
+        <p class="mb-1">Content checking will Update as soon ...</p>
+        <small>{$v[0]['tag']}</small>
+    </a>
+    {/foreach}
 </div>
 {include file='index/extra/footer'}
 </body>

@@ -3,7 +3,17 @@
 {include file='index/extra/header' title='BlogPusher'}
 <body>
 {include file='index/extra/contact'}
-
+<br>
+<div style="margin-left: 130px;margin-right: 130px">
+    <ul class="list-group">
+        {foreach $taglist as $k => $v}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            {$k}
+            <span class="badge badge-primary badge-pill">{$v}</span>
+        </li>
+        {/foreach}
+    </ul>
+</div>
 {include file='index/extra/footer'}
 </body>
 </html>

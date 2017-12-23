@@ -13,18 +13,23 @@ class Article extends Controller
 {
     public function anew()
     {
-        $taglist = ['0','2'];
+        $taglist = model('article')->gettaglist('key');
         $this->assign('taglist',$taglist);
         return view('index/new');
     }
 
     public function getlist()
     {
+//        echo 'test';
+        $alist = model('Article')->read_all();
+        $this->assign("alist",$alist);
         return view('index/alist');
     }
 
     public function tag()
     {
+        $tag = model('article')->gettaglist();
+        $this->assign('taglist',$tag);
         return view('index/tag');
     }
 
@@ -36,65 +41,6 @@ class Article extends Controller
     public function achange()
     {
 
-    }
-
-    public function read_all()
-    {
-        $dir = '/Users/wdhhdzyhb/darkkris.github.io/_posts';
-        $ignore = '.DS_Store';
-        if(!is_dir($dir)) return false;
-
-        $handle = opendir($dir);
-        $afiles = array();
-        $p = 0;
-
-        if($handle){
-            while(($fl = readdir($handle)) !== false){
-                $temp = $dir.DIRECTORY_SEPARATOR.$fl;
-                if($fl!='.' && $fl != '..' && $fl != $ignore)
-                {
-                    // 处理文件
-                    $afiles[++$p] = $this->filework($temp);
-                }
-            }
-        }
-        return $afiles;
-    }
-
-    private function filework($temp)
-    {
-        $myfile = fopen($temp,"r");
-        $article = fread($myfile,filesize($temp));
-
-        /*
-         * title: "xxxxxxx"
-         * date: xxxx-xx-xx
-         * description: "xxxx,xxxx,xxx"
-         * tag: xxxxxx
-         */
-
-        $titlestr = strpos($article,'title: "')+8;
-        $datestr = strpos($article,"date: ")+6;
-        $desstr = strpos($article,"description: ")+14;
-        $tagstr = strpos($article,"tag: ")+5;
-
-        for($i = $titlestr;$article[$i]!='"';$i++);
-        $titleend = $i-1;
-        for($i = $datestr;$article[$i]!='d';$i++);
-        $dateend = $i-2;
-        for($i = $desstr;$article[$i]!='"';$i++);
-        $desend = $i-1;
-        for($i = $tagstr;$article[$i]!='-';$i++);
-        $tagend = $i-2;
-
-        $ret = array([
-            "title" => ,
-            "date" => ,
-            "description" => ,
-            "tag" =>
-        ])
-
-        return $ret;
     }
 
     public function uploadimg()
