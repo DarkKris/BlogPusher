@@ -5,27 +5,27 @@
 {include file='index/extra/contact'}
 {include file='index/extra/background'}
 <br>
-<form style="margin-right: 130px;margin-left: 130px;margin-top: 15px" action="{:url('index/create')}">
+<form style="margin-right: 130px;margin-left: 130px;margin-top: 15px" action="{:url('index/create')}" method="post">
     <div class="form-group">
         <label for="formGroupExampleInput">Article Title</label>
-        <input type="text" class="form-control" id="formGroupExampleInput" value="{:$title}" required>
+        <input type="text" class="form-control" id="formGroupExampleInput" value="{:$data['title']}" required>
     </div>
 
     <div class="form-group">
         <label for="descriptionInput">Description</label>
-        <input type="text" class="form-control" id="descriptionInput" value="{:$description}" required>
+        <input type="text" class="form-control" id="descriptionInput" value="{:$data['description']}" required>
     </div>
 
     <label for="formGroupExampleInput">Publish Date</label>
     <div class="form-row">
         <div class="col">
-            <input type="text" class="form-control" value="{$date|'Y',###}" required>
+            <input type="text" class="form-control" value="{$data['date']|'Y',###}" required>
         </div>
         <div class="col">
-            <input type="text" class="form-control" placeholder="{$date|'m',###}" required>
+            <input type="text" class="form-control" placeholder="{$data['date']|'m',###}" required>
         </div>
         <div class="col">
-            <input type="text" class="form-control" placeholder="{$date|'d',###}" required>
+            <input type="text" class="form-control" placeholder="{$data['date']|'d',###}" required>
         </div>
     </div>
 
@@ -33,8 +33,8 @@
         <label for="exampleFormControlSelect1">Tag Select</label>
         <select class="form-control" id="exampleFormControlSelect1" >
             {volist name="taglist" id="infor"}
-                {eq name="" value=""}
-                    <option selected="selected">{$infor}</option>
+                {eq name="tag" value="$infor"}
+                    <option selected>{$infor}</option>
                 {else/}
                     <option>{$infor}</option>
                 {/eq}

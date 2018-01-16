@@ -13,7 +13,7 @@
 <br>
 <div class="list-group" style="margin-right: 130px;margin-left: 130px">
     {foreach $alist as $k => $v}
-    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+    <a href="{:url('index/Article/achange',array('tempsrc'=>$v[0]['src']))}" class="list-group-item list-group-item-action flex-column align-items-start">
         <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1">{$v[0]['title']}</h5>
             <small>{$v[0]['date']}</small>

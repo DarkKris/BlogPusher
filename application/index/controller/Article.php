@@ -38,9 +38,12 @@ class Article extends Controller
 
     }
 
-    public function achange()
+    public function achange($tempsrc)
     {
-
+        $tag = model('article')->gettaglist();
+        $this->assign('taglist',$tag);
+        $this->assign('data',model('Article')->filework($tempsrc));
+        return view('index/change');
     }
 
     public function uploadimg()

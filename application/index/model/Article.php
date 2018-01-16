@@ -69,7 +69,8 @@ class Article extends Model
             "title" => $title,
             "date" => $date,
             "description" => $description,
-            "tag" => $tag
+            "tag" => $tag,
+            "src" => $temp
         ]);
 
         return $ret;
