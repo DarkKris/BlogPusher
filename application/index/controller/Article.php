@@ -33,11 +33,6 @@ class Article extends Controller
         return view('index/tag');
     }
 
-    public function create()
-    {
-
-    }
-
     public function achange($tempsrc)
     {
         $tag = model('article')->gettaglist();
@@ -49,6 +44,59 @@ class Article extends Controller
     public function uploadimg()
     {
 
+    }
+
+    public function savearticle($data)
+    {
+        /*
+         * title: "xxxxxxx"
+         * date: xxxx-xx-xx
+         * description: "xxxx,xxxx,xxx"
+         * tag: xxxxxx
+         */
+
+        $dir='/Applications/MAMP/htdocs/BlogPusher/public/static/save/save.md';
+        $myfile=fopen($dir,"w");
+        $articlecontent="---\nlayout: post\ntitle: \"".$data['title']."\"\ndate: ".$data['year']."-".$data['month']."-".$data['day']." \ndescription: \"".$data['des']."\"\ntag: ".$data['tag']."\n---\n\n".$data['content'];
+        fwrite($myfile,$articlecontent);
+        fclose($myfile);
+    }
+
+    public function create()
+    {
+        $data=array(
+            'title'=>input('post.title'),
+            'des'=>input('post.des'),
+            'year'=>input('post.year'),
+            'month'=>input('post.month'),
+            'day'=>input('post.day'),
+            'tag'=>input('post.selector'),
+            'content'=>input('post.content')
+        );
+        if($data['tag']=="New..")
+        {
+            $data['tag']=input("post.newtag");
+        }
+        $this->savearticle($data);
+        $articlename=$data['year']."-".$data['month']."-".$data['day']."-".$data['title'].".md";
+        //将文件移动至/Users/wdhhdzyhb/darkkris.github.io/_posts并删除文件
+        copy('/Applications/MAMP/htdocs/BlogPusher/public/static/save/save.md',"/Users/wdhhdzyhb/darkkris.github.io/_posts/$articlename");
+        unlink('/Applications/MAMP/htdocs/BlogPusher/public/static/save/save.md');
+
+        //cd darkkris.github.io
+        //git add _posts/$articlename
+        //git commit -m “发布新文章”
+        //git push origingit master
+        exec("cd /Users/wdhhdzyhb/darkkris.github.io;git add _posts/$articlename;git commit -m \"发布新文章\";git push origingit master;");
+        $this->pushsuccess($data['title'],substr($data['content'],0,50),"https://darkkris.github.io/".$data['year']."/".$data['month']."/".$articlename);
+    }
+
+    private function pushsuccess($title="",$content="",$url="")
+    {
+        $this->assign('title',$title);
+        $this->assign('content',$content);
+        $this->assign('url',$url);
+        $this->fetch("index/success");
     }
 }
 ?>

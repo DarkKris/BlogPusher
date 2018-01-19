@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+{include file='index/extra/header' title='Push Successfully'}
+<body>
+{include file='index/extra/contact'}
+{include file='index/extra/background'}
+<div align="center" style="margin-top: 30px">
+    <h1>Push Successfully</h1>
+    <h4 style="margin-top: 20px">Share this new article to</h4>
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-secondary btn-primary" onclick="sharetoqz()">Qzone</button>
+        <button type="button" class="btn btn-secondary btn-primary" onclick="sharetowb()">Weibo</button>
+        <button type="button" class="btn btn-secondary btn-primary" onclick="sharetoq()">QQ</button>
+    </div>
+    <br>
+    <button style="margin-top: 20px" type="button" class="btn btn-success" onclick='window.location.href="http://localhost:8888/BlogPusher/public/"'>Back to Main</button>
+</div>
+</body>
+<script>
+    function sharetoq(title,content,url){
+        window.open("http://connect.qq.com/widget/shareqq/index.html?url="+url+"&title="+title+"&summary="+content);
+    }
+
+    function sharetoqz(title,content,url){
+        window.open("http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url="+url+"&title="+title+"&summary="+content);
+    }
+
+    function sharetowb(content,url){
+        window.open("http://service.weibo.com/share/mobile.php?url="+url+"&title="+content);
+    }
+</script>
+</html>

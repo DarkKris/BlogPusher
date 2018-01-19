@@ -59,18 +59,22 @@ class Article extends Model
         $desend = $i - 1;
         for ($i = $tagstr; $article[$i] != '-'; $i++) ;
         $tagend = $i - 2;
+        for ($i = $tagend; $article[$i] == '-'; $i++) ;
+        $astr = $i;
 
         $title = substr($article, $titlestr, $titleend - $titlestr + 1);
         $date = substr($article, $datestr, $dateend - $datestr);
         $description = substr($article, $desstr, $desend - $desstr + 1);
         $tag = substr($article, $tagstr, $tagend - $tagstr + 1);
+        $content = substr($article, $astr, strlen($article)-$astr+1);
 
         $ret = array([
             "title" => $title,
             "date" => $date,
             "description" => $description,
             "tag" => $tag,
-            "src" => $temp
+            "src" => $temp,
+            "content" => $content
         ]);
 
         return $ret;

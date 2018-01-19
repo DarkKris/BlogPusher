@@ -6,27 +6,27 @@
 {include file='index/extra/background'}
 <br>
 <!--<div>-->
-    <form style="margin-right: 130px;margin-left: 130px;margin-top: 15px" action="{:url('index/create')}" method="post">
+    <form style="margin-right: 130px;margin-left: 130px;margin-top: 15px" action="{:url('index/article/create')}" method="post">
         <div class="form-group">
             <label for="formGroupExampleInput">Article Title</label>
-            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter Title..." required>
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter Title..." name="title" required>
         </div>
 
         <div class="form-group">
             <label for="descriptionInput">Description</label>
-            <input type="text" class="form-control" id="descriptionInput" placeholder="Description..." required>
+            <input type="text" class="form-control" id="descriptionInput" placeholder="Description..." name="des" required>
         </div>
 
         <label for="formGroupExampleInput">Publish Date</label>
         <div class="form-row">
             <div class="col">
-                <input type="text" class="form-control" placeholder="Year" required>
+                <input type="text" class="form-control" placeholder="Year" name="year" required>
             </div>
             <div class="col">
-                <input type="text" class="form-control" placeholder="Month" required>
+                <input type="text" class="form-control" placeholder="Month" name="month" required>
             </div>
             <div class="col">
-                <input type="text" class="form-control" placeholder="Day" required>
+                <input type="text" class="form-control" placeholder="Day" name="day" required>
             </div>
         </div>
 
@@ -44,7 +44,7 @@
         <script>
             function displayaddtag(){
                 if(document.getElementById('tagselector').value=="New..") {
-                    document.getElementById('addtag').innerHTML = "<br><input type=\"text\" class=\"form-control\" placeholder=\"New Tag Name\" required>";
+                    document.getElementById('addtag').innerHTML = "<br><input type=\"text\" class=\"form-control\" placeholder=\"New Tag Name\" name=\"newtag\" required>";
                 }else{
                     document.getElementById('addtag').innerHTML = "";
                 }
@@ -62,7 +62,6 @@
                             {include file='index/function/lvc'}
 
                         <button type="button" class="btn btn-secondary" data-toggle="collapse" data-target="#insertimage" aria-expanded="false" aria-controls="collapseExample">Insert Image</button>
-                            {include file='index/function/iic'}
 
                         <button type="button" class="btn btn-secondary" onclick="insertspace()">Insert Space</button>
 
@@ -71,9 +70,10 @@
                     </div>
                 </div>
             </div>
-            <textarea class="form-control" id="contentText" rows="20"></textarea>
+            <textarea class="form-control" id="contentText" rows="20" name="content" oninput="savecheck()"></textarea>
             <!--<div id="preview" style="margin-left: 10px;float:right;width:49.5%;height:768px; border:0.5px solid #315;background:#e6e6e6;"></div>-->
         </div>
+        <div id="test"></div>
 
         <div align="center">
             <button type="submit" class="btn btn-primary" style="width: 100px">Submit</button>
@@ -83,6 +83,22 @@
 <!--</div>-->
 
 <script>
+    var before = 0;
+
+    function savecheck(){
+        document.getElementById('test').innerHTML = 'checking';
+        var now = new Date().getTime();
+        if(now - before >= 3000)
+        {
+            before = now;
+            autosave();
+        }
+    }
+
+    function autosave(){
+        document.getElementById('test').innerHTML = 'success'+before;
+    }
+
     function inserttab(){
         document.getElementById('contentText').value = document.getElementById('contentText').value + "&nbsp;&nbsp;&nbsp;&nbsp;";
     }

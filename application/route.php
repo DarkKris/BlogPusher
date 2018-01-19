@@ -20,4 +20,5 @@ return [
     'newarticle'=>'index/article/anew',
     'articlelist'=>'index/article/getlist',
     'taglist'=>'index/article/tag',
+    'success'=>'index/article/pushsuccess',
 ];
