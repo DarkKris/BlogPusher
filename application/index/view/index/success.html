@@ -8,9 +8,9 @@
     <h1>Push Successfully</h1>
     <h4 style="margin-top: 20px">Share this new article to</h4>
     <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-secondary btn-primary" onclick="sharetoqz()">Qzone</button>
-        <button type="button" class="btn btn-secondary btn-primary" onclick="sharetowb()">Weibo</button>
-        <button type="button" class="btn btn-secondary btn-primary" onclick="sharetoq()">QQ</button>
+        <button type="button" class="btn btn-secondary btn-primary" onclick="sharetoqz('{$title}','{$content}','{$url}')">Qzone</button>
+        <button type="button" class="btn btn-secondary btn-primary" onclick="sharetowb('{$title}','{$content}','{$url}')">Weibo</button>
+        <button type="button" class="btn btn-secondary btn-primary" onclick="sharetoq('{$content}','{$url}')">QQ</button>
     </div>
     <br>
     <button style="margin-top: 20px" type="button" class="btn btn-success" onclick='window.location.href="http://localhost:8888/BlogPusher/public/"'>Back to Main</button>

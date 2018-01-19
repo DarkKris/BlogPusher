@@ -88,15 +88,11 @@ class Article extends Controller
         //git commit -m “发布新文章”
         //git push origingit master
         exec("cd /Users/wdhhdzyhb/darkkris.github.io;git add _posts/$articlename;git commit -m \"发布新文章\";git push origingit master;");
-        $this->pushsuccess($data['title'],substr($data['content'],0,50),"https://darkkris.github.io/".$data['year']."/".$data['month']."/".$articlename);
-    }
 
-    private function pushsuccess($title="",$content="",$url="")
-    {
-        $this->assign('title',$title);
-        $this->assign('content',$content);
-        $this->assign('url',$url);
-        $this->fetch("index/success");
+        $this->assign('title',$data['title']);
+        $this->assign('content',substr($data['content'],0,50));
+        $this->assign('url',"https://darkkris.github.io/".$data['year']."/".$data['month']."/".$articlename);
+        return view("index/success");
     }
 }
 ?>
