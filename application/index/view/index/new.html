@@ -6,7 +6,7 @@
 {include file='index/extra/background'}
 <br>
 <!--<div>-->
-    <form style="margin-right: 130px;margin-left: 130px;margin-top: 15px" action="{:url('index/article/create')}" method="post">
+    <form style="margin-right: 130px;margin-left: 130px;margin-top: 15px" action="{:url('index/article/create')}" method="get">
         <div class="form-group">
             <label for="formGroupExampleInput">Article Title</label>
             <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter Title..." name="title" required>
@@ -86,7 +86,8 @@
     var before = 0;
 
     function savecheck(){
-        document.getElementById('test').innerHTML = 'checking';
+//        document.getElementById('test').innerHTML = 'checking';
+        document.getElementById('test').innerHTML = '';
         var now = new Date().getTime();
         if(now - before >= 3000)
         {
@@ -96,7 +97,9 @@
     }
 
     function autosave(){
-        document.getElementById('test').innerHTML = 'success'+before;
+//        var
+//        window.open("");
+        document.getElementById('test').innerHTML = '<div class="alert alert-success" role="alert"> Auto-Save Successfully </div>';
     }
 
     function inserttab(){

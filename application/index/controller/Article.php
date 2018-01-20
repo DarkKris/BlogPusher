@@ -65,13 +65,13 @@ class Article extends Controller
     public function create()
     {
         $data=array(
-            'title'=>input('post.title'),
-            'des'=>input('post.des'),
-            'year'=>input('post.year'),
-            'month'=>input('post.month'),
-            'day'=>input('post.day'),
-            'tag'=>input('post.selector'),
-            'content'=>input('post.content')
+            'title'=>input('get.title'),
+            'des'=>input('get.des'),
+            'year'=>input('get.year'),
+            'month'=>input('get.month'),
+            'day'=>input('get.day'),
+            'tag'=>input('get.selector'),
+            'content'=>input('get.content')
         );
         if($data['tag']=="New..")
         {
@@ -90,7 +90,7 @@ class Article extends Controller
         exec("cd /Users/wdhhdzyhb/darkkris.github.io;git add _posts/$articlename;git commit -m \"发布新文章\";git push origingit master;");
 
         $this->assign('title',$data['title']);
-        $this->assign('content',substr($data['content'],0,50));
+        $this->assign('content',mb_substr($data['content'],0,50));
         $this->assign('url',"https://darkkris.github.io/".$data['year']."/".$data['month']."/".$articlename);
         return view("index/success");
     }
