@@ -8,25 +8,25 @@
 <!--<div>-->
     <form style="margin-right: 130px;margin-left: 130px;margin-top: 15px" action="{:url('index/article/create')}" method="get">
         <div class="form-group">
-            <label for="formGroupExampleInput">Article Title</label>
-            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter Title..." name="title" required>
+            <label for="title">Article Title</label>
+            <input type="text" class="form-control" id="title" placeholder="Enter Title..." name="title" required>
         </div>
 
         <div class="form-group">
-            <label for="descriptionInput">Description</label>
-            <input type="text" class="form-control" id="descriptionInput" placeholder="Description..." name="des" required>
+            <label for="description">Description</label>
+            <input type="text" class="form-control" id="description" placeholder="Description..." name="des" required>
         </div>
 
-        <label for="formGroupExampleInput">Publish Date</label>
+        <label for="title">Publish Date</label>
         <div class="form-row">
             <div class="col">
-                <input type="text" class="form-control" placeholder="Year" name="year" required>
+                <input type="text" class="form-control" placeholder="Year" name="year" id="year" required>
             </div>
             <div class="col">
-                <input type="text" class="form-control" placeholder="Month" name="month" required>
+                <input type="text" class="form-control" placeholder="Month" name="month" id="month" required>
             </div>
             <div class="col">
-                <input type="text" class="form-control" placeholder="Day" name="day" required>
+                <input type="text" class="form-control" placeholder="Day" name="day" id="day" required>
             </div>
         </div>
 
@@ -44,7 +44,7 @@
         <script>
             function displayaddtag(){
                 if(document.getElementById('tagselector').value=="New..") {
-                    document.getElementById('addtag').innerHTML = "<br><input type=\"text\" class=\"form-control\" placeholder=\"New Tag Name\" name=\"newtag\" required>";
+                    document.getElementById('addtag').innerHTML = "<br><input type=\"text\" class=\"form-control\" placeholder=\"New Tag Name\" name=\"newtag\" id='\"newtag\" 'required>";
                 }else{
                     document.getElementById('addtag').innerHTML = "";
                 }
@@ -97,9 +97,21 @@
     }
 
     function autosave(){
-//        var
-//        window.open("");
-        document.getElementById('test').innerHTML = '<div class="alert alert-success" role="alert"> Auto-Save Successfully </div>';
+        var title = document.getElementById('title').value;
+        var des = document.getElementById('description').value;
+        var tag = document.getElementById('tagselector').value;
+        var year = document.getElementById('year').value;
+        var month = document.getElementById('month').value;
+        var day = document.getElementById('day').value;
+        var content = document.getElementById('contentText').value;
+
+        if(document.getElementById('tagselector').value=="New..") {
+            tag = document.getElementById('newtag').value;
+        };
+
+//        window.open("http://localhost:8888/BlogPusher/public/index/Article/autosavearticle?title="+title+"&year="+year+"&month="+month+"&day="+day+"&tag="+tag+"&content="+content+"&des="+des);
+
+        document.getElementById('test').innerHTML = '<div class="alert alert-success" role="alert"> Auto-Save Successfully </div>'+title;
     }
 
     function inserttab(){

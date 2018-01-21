@@ -62,6 +62,22 @@ class Article extends Controller
         fclose($myfile);
     }
 
+    public function autosavearticle($title,$year,$month,$day,$des,$tag,$content)
+    {
+        /*
+         * title: "xxxxxxx"
+         * date: xxxx-xx-xx
+         * description: "xxxx,xxxx,xxx"
+         * tag: xxxxxx
+         */
+
+        $dir='/Applications/MAMP/htdocs/BlogPusher/public/static/save/save.md';
+        $myfile=fopen($dir,"w");
+        $articlecontent="---\nlayout: post\ntitle: \"".$title."\"\ndate: ".$year."-".$month."-".$day." \ndescription: \"".$des."\"\ntag: ".$tag."\n---\n\n".$content;
+        fwrite($myfile,$articlecontent);
+        fclose($myfile);
+    }
+
     public function create()
     {
         $data=array(
