@@ -33,6 +33,21 @@ class Article extends Controller
         return view('index/tag');
     }
 
+    public function getToc($url)
+    {
+//        $url = urldecode($url);
+        echo $url.'<br>';
+        $str = "";
+        $ret = 0;
+        exec("python3 /Users/wdhhdzyhb/PycharmProjects/learngit/autoTOC.py $url",$str,$ret);
+        if($ret==0)
+        {
+            dump($str);
+        }else{
+            echo 'False';
+        }
+    }
+
     public function achange($tempsrc)
     {
         $tag = model('article')->gettaglist();
